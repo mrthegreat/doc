@@ -23,9 +23,9 @@ get '/test/:ip' do |ip|
   result = main.check_if_drupal_is_up(ip)
   if result[0]
     status 200
-    { result[0] => result[1] }.to_json
+    { '200' => result[1] }.to_json
   else
     status 400
-    { result[0] => "Drupal on #{ip} is down" }.to_json
+    { '400' => "Drupal on #{ip} is down" }.to_json
   end
 end
