@@ -45,7 +45,7 @@ class Main
   def print_status(client, condition, stackname)
     Whirly.configure spinner: 'dots'
     Whirly.start
-    Whirly.status = whirly_status(condition,stackname)
+    Whirly.status = whirly_status(condition, stackname)
     current_status = client.check_stack_status(@credentials)
     while current_status == condition
       sleep(5)
@@ -55,7 +55,7 @@ class Main
     puts client.check_stack_status(@credentials)
   end
 
-  def whirly_status(condition,stackname)
+  def whirly_status(condition, stackname)
     return "Deleting #{stackname}" if condition == 'DELETE_IN_PROGRESS'
     return "Creating #{stackname}" if condition == 'CREATE_IN_PROGRESS'
   end
