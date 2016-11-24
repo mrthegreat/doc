@@ -1,10 +1,10 @@
 {
   "Resources" : {
-    "SimpleConfig" : {
+    "LaunchConfig" : {
       "Type" : "AWS::AutoScaling::LaunchConfiguration",
         "Properties" : {
-              "SecurityGroups" : [{ "Ref" : "webserversg" }],   
-              "KeyName" : "mykey",
+              "SecurityGroups" : [{ "Ref" : "drupalsecgrp" }],   
+              "KeyName" : "drupal_instance_key",
               "ImageId" : "ami-8504fdea",
               "InstanceType" : "t2.micro",
               "UserData" : { 
@@ -31,11 +31,11 @@
           }
         },
 
-        "MyServerGroup" : {
+        "DrupalServerGroup" : {
            "Type" : "AWS::AutoScaling::AutoScalingGroup",
            "Properties" : {
               "AvailabilityZones" : { "Fn::GetAZs" : ""},
-              "LaunchConfigurationName" : { "Ref" : "SimpleConfig" },
+              "LaunchConfigurationName" : { "Ref" : "LaunchConfig" },
               "MinSize" : "1",
               "MaxSize" : "3",
               "LoadBalancerNames" : [ { "Ref" : "LB" } ]
@@ -50,7 +50,7 @@
           }
         },
 
-        "webserversg" : {
+        "drupalsecgrp" : {
           "Type" : "AWS::EC2::SecurityGroup",
           "Properties" : {
               "GroupDescription" : "Enable SSH 22 and HTTP 80",

@@ -27,8 +27,8 @@ class Main
       open(address) do |content|
         return analyse_content(content)
       end
-    rescue OpenURI::HTTPError, Errno::ETIMEDOUT
-      false
+    rescue OpenURI::HTTPError, Errno::ETIMEDOUT, SocketError
+      [false]
     end
   end
 
