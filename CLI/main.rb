@@ -7,6 +7,10 @@ require 'aws_cred.rb'
 
 # Class which contains main functionalities of the program
 class Main
+  def initialize(config)
+    read_config(config)
+  end
+
   def create_stack(stackname)
     aws_client = AWSClient.new(@credentials, stackname)
     aws_client.create_stack

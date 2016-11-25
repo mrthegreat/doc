@@ -1,4 +1,4 @@
-# deployer.rb
+#!/usr/bin/env ruby
 $LOAD_PATH << '.' # require will search for files in this directory
 require 'thor'
 require 'main'
@@ -7,14 +7,13 @@ require 'main'
 class DrupalCLI < Thor
   def initialize(*args)
     super
-    @main = Main.new
   end
 
   option :stackname, required: true
   option :config, required: false
   desc 'create', 'create AWS stack'
   def create
-    read_config_file(options[:config])
+  	@main = Main.new
     @main.create_stack(options[:stackname])
   end
 
@@ -22,7 +21,7 @@ class DrupalCLI < Thor
   option :config, required: false
   desc 'delete', 'delete AWS stack'
   def delete
-    read_config_file(options[:config])
+  	@main = Main.new
     @main.delete_stack(options[:stackname])
   end
 
@@ -51,4 +50,8 @@ class DrupalCLI < Thor
   end
 end
 
-DrupalCLI.start(ARGV)
+begin
+	DrupalCLI.start(ARGV)
+rescue Errno::ENOENT
+	puts "No config file was found in #{__dir__}"
+end
