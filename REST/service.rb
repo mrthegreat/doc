@@ -6,8 +6,9 @@ require 'sinatra'
 require 'digest'
 require 'main.rb'
 
-set :port, 80
+set :port, 1337
 main = Main.new
+main.read_config
 
 post '/:name' do |name|
   main.create_stack(name)
@@ -17,14 +18,12 @@ delete '/:name' do |name|
   main.delete_stack(name)
 end
 
-get '/check/:ip' do |ip|
+get '/check/:host' do |host|
   content_type 'application/json'
-  result = main.check_if_drupal_is_up(ip)
-  if result[0]
-    status 200
-    { '200' => result[1] }.to_json
+  result = main.check_if_drupal_is_up(host)
+  if result
+    { :message => "Drupal on #{host} is up!" }.to_json
   else
-    status 400
-    { '400' => "Drupal on #{ip} is down" }.to_json
+    { :message => "Drupal on #{host} is down" }.to_json
   end
 end
