@@ -16,8 +16,8 @@ class DrupalCLI < Thor
   option :config, required: false
   desc 'create', 'create AWS stack'
   ##
-	# Calls the main class's create_stack function after it reads
-	# the configuration from the config file
+  # Calls the main class's create_stack function after it reads
+  # the configuration from the config file
   def create
     credentials = read_config(options[:config])
     @main.create_stack(options[:stackname])
@@ -29,8 +29,8 @@ class DrupalCLI < Thor
   option :config, required: false
   desc 'delete', 'delete AWS stack'
   ##
-	# Calls the main class's delete_stack function after it reads
-	# the configuration from the config file
+  # Calls the main class's delete_stack function after it reads
+  # the configuration from the config file
   def delete
     credentials = read_config(options[:config])
     @main.delete_stack(options[:stackname])
@@ -44,10 +44,10 @@ class DrupalCLI < Thor
   		' reachable on the defined host'
   option :host, required: true
   ##
-	# Calls the main class's check_if_drupal_is_up function and
-	# based on the status it prints if drupal is up or down
+  # Calls the main class's check_if_drupal_is_up function and
+  # based on the status it prints if drupal is up or down
   def check
-    status, body = @main.check_if_drupal_is_up(options[:host])
+    status = @main.check_if_drupal_is_up(options[:host])
     if status
       puts 'Drupal is up!'
     else
@@ -56,6 +56,7 @@ class DrupalCLI < Thor
   end
 
   private
+
   ##
   # Function whic reads the configuration YAML file.
   def read_config(config_file)
