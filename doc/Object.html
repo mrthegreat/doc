@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Object - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>CLI/deployer.rb
+    <li>REST/service.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">BasicObject
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-i-2F-3Aname">#/:name</a>
+    
+    <li ><a href="#method-i-2Fcheck-2F-3Ahost">#/check/:host</a>
+    
+    <li ><a href="#method-i-print_status">#print_status</a>
+    
+    <li ><a href="#method-i-whirly_status">#whirly_status</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./CLI/aws_template.html">aws.template</a>
+  
+    <li class="file"><a href="./README_md.html">README</a>
+  
+    <li class="file"><a href="./doc/created_rid.html">created.rid</a>
+  
+    <li class="file"><a href="./s3_files/apache2_conf.html">apache2.conf</a>
+  
+    <li class="file"><a href="./s3_files/drupal_pp.html">drupal.pp</a>
+  
+    <li class="file"><a href="./s3_files/puppet_conf.html">puppet.conf</a>
+  
+    <li class="file"><a href="./s3_files/site_pp.html">site.pp</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./AWSClient.html">AWSClient</a>
+  
+    <li><a href="./AWSCred.html">AWSCred</a>
+  
+    <li><a href="./DrupalCLI.html">DrupalCLI</a>
+  
+    <li><a href="./Main.html">Main</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Object</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-2F-3Aname" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">/:name</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Create stack with POST method and stackname parameter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="2F-3Aname-source">
+            <pre><span class="ruby-comment"># File REST/service.rb, line 13</span>
+<span class="ruby-identifier">post</span> <span class="ruby-string">&#39;/:name&#39;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">main</span>.<span class="ruby-identifier">create_stack</span>(<span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- 2F-3Aname-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- 2F-3Aname-method -->
+
+    
+      <div id="method-i-2Fcheck-2F-3Ahost" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">/check/:host</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Checks if drupal is up on host, with GET method</p>
+          
+          
+
+          
+          <div class="method-source-code" id="2Fcheck-2F-3Ahost-source">
+            <pre><span class="ruby-comment"># File REST/service.rb, line 25</span>
+<span class="ruby-identifier">get</span> <span class="ruby-string">&#39;/check/:host&#39;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">host</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">content_type</span> <span class="ruby-string">&#39;application/json&#39;</span>
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">main</span>.<span class="ruby-identifier">check_if_drupal_is_up</span>(<span class="ruby-identifier">host</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>
+    { <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Drupal on #{host} is up!&quot;</span> }.<span class="ruby-identifier">to_json</span>
+  <span class="ruby-keyword">else</span>
+    { <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Drupal on #{host} is down&quot;</span> }.<span class="ruby-identifier">to_json</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- 2Fcheck-2F-3Ahost-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- 2Fcheck-2F-3Ahost-method -->
+
+    
+      <div id="method-i-print_status" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_status</span><span
+            class="method-args">(client, condition, stackname, credentials)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Prints the current status of the process with whirly progress bar</p>
+          
+          
+
+          
+          <div class="method-source-code" id="print_status-source">
+            <pre><span class="ruby-comment"># File CLI/deployer.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_status</span>(<span class="ruby-identifier">client</span>, <span class="ruby-identifier">condition</span>, <span class="ruby-identifier">stackname</span>, <span class="ruby-identifier">credentials</span>)
+  <span class="ruby-constant">Whirly</span>.<span class="ruby-identifier">configure</span> <span class="ruby-identifier">spinner</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;dots&#39;</span>
+  <span class="ruby-constant">Whirly</span>.<span class="ruby-identifier">start</span>
+  <span class="ruby-constant">Whirly</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">whirly_status</span>(<span class="ruby-identifier">condition</span>, <span class="ruby-identifier">stackname</span>)
+  <span class="ruby-identifier">current_status</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">check_stack_status</span>(<span class="ruby-identifier">credentials</span>)
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">current_status</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">condition</span>
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">current_status</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">check_stack_status</span>(<span class="ruby-identifier">credentials</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-constant">Whirly</span>.<span class="ruby-identifier">stop</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">client</span>.<span class="ruby-identifier">check_stack_status</span>(<span class="ruby-identifier">credentials</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- print_status-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- print_status-method -->
+
+    
+      <div id="method-i-whirly_status" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">whirly_status</span><span
+            class="method-args">(condition, stackname)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Decides if the process is deletation or creation</p>
+          
+          
+
+          
+          <div class="method-source-code" id="whirly_status-source">
+            <pre><span class="ruby-comment"># File CLI/deployer.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">whirly_status</span>(<span class="ruby-identifier">condition</span>, <span class="ruby-identifier">stackname</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">condition</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;DELETE_IN_PROGRESS&#39;</span> <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;Deleting #{stackname}&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;CREATE_IN_PROGRESS&#39;</span> <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;Creating #{stackname}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- whirly_status-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- whirly_status-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

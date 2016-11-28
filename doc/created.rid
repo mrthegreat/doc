@@ -1,0 +1,14 @@
+Mon, 28 Nov 2016 10:12:11 +0100
+./CLI/aws.template	Fri, 25 Nov 2016 10:52:17 +0100
+./CLI/aws_client.rb	Mon, 28 Nov 2016 10:01:44 +0100
+./CLI/aws_cred.rb	Mon, 28 Nov 2016 09:57:53 +0100
+./CLI/config.yml	Wed, 23 Nov 2016 14:56:55 +0100
+./CLI/deployer.rb	Mon, 28 Nov 2016 09:44:13 +0100
+./CLI/main.rb	Mon, 28 Nov 2016 10:11:59 +0100
+./doc/created.rid	Mon, 28 Nov 2016 10:12:11 +0100
+./README.md	Mon, 28 Nov 2016 10:06:13 +0100
+./REST/service.rb	Mon, 28 Nov 2016 10:09:14 +0100
+./s3_files/apache2.conf	Mon, 21 Nov 2016 10:54:54 +0100
+./s3_files/drupal.pp	Mon, 21 Nov 2016 11:41:37 +0100
+./s3_files/puppet.conf	Wed, 16 Nov 2016 15:58:44 +0100
+./s3_files/site.pp	Thu, 17 Nov 2016 15:28:01 +0100

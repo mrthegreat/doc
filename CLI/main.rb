@@ -1,10 +1,9 @@
 require 'aws_client.rb'
-require 'optparse'
 require 'yaml'
 require 'open-uri'
-require 'whirly'
 require 'aws_cred.rb'
 
+##
 # Class which contains main functionalities of the program
 class Main
   def create_stack(stackname)
@@ -28,7 +27,7 @@ class Main
     end
   end
 
-  def read_config(config_file = File.join(__dir__, 'config.yml'))
+  def read_config_file(config_file = File.join(__dir__, 'config.yml'))
     config = YAML.load_file(config_file)
     @credentials = AWSCred.new(access_key: config['aws']['accesskey'],
                                secret_access_key: config['aws']['secretkey'],
@@ -40,6 +39,8 @@ class Main
 
   private
 
+  ##
+  # Checks if the reponse is 200 OK and the response body contains 'Drupal'
   def validate_response(content)
     content.status[0] == '200' && content.read.include?('Drupal')
   end

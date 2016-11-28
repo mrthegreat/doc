@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>aws.template - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../CLI/aws_template.html">aws.template</a>
+  
+    <li class="file"><a href="../README_md.html">README</a>
+  
+    <li class="file"><a href="../doc/created_rid.html">created.rid</a>
+  
+    <li class="file"><a href="../s3_files/apache2_conf.html">apache2.conf</a>
+  
+    <li class="file"><a href="../s3_files/drupal_pp.html">drupal.pp</a>
+  
+    <li class="file"><a href="../s3_files/puppet_conf.html">puppet.conf</a>
+  
+    <li class="file"><a href="../s3_files/site_pp.html">site.pp</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../AWSClient.html">AWSClient</a>
+  
+    <li><a href="../AWSCred.html">AWSCred</a>
+  
+    <li><a href="../DrupalCLI.html">DrupalCLI</a>
+  
+    <li><a href="../Main.html">Main</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>{</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;Resources&quot;</span> <span class="ruby-operator">:</span> {
+  <span class="ruby-string">&quot;LaunchConfig&quot;</span> <span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;Type&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;AWS::AutoScaling::LaunchConfiguration&quot;</span>,
+      <span class="ruby-string">&quot;Properties&quot;</span> <span class="ruby-operator">:</span> {
+        <span class="ruby-string">&quot;SecurityGroups&quot;</span> <span class="ruby-operator">:</span> [{ <span class="ruby-string">&quot;Ref&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;drupalsecgrp&quot;</span> }],   
+        <span class="ruby-string">&quot;KeyName&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;drupal_instance_key&quot;</span>,
+        <span class="ruby-string">&quot;ImageId&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;ami-8504fdea&quot;</span>,
+        <span class="ruby-string">&quot;InstanceType&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;t2.micro&quot;</span>,
+        <span class="ruby-string">&quot;UserData&quot;</span> <span class="ruby-operator">:</span> { 
+        <span class="ruby-string">&quot;Fn::Base64&quot;</span> <span class="ruby-operator">:</span> { 
+            <span class="ruby-string">&quot;Fn::Join&quot;</span> <span class="ruby-operator">:</span> [<span class="ruby-string">&quot;&quot;</span>, [
+                <span class="ruby-node">&quot;#!/bin/bash\n&quot;</span>,
+                <span class="ruby-string">&quot;cd ~\n&quot;</span>,
+                <span class="ruby-string">&quot;wget http://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb\n&quot;</span>,
+                <span class="ruby-string">&quot;wget https://s3.eu-central-1.amazonaws.com/devops-challenge/deploy.tar.gz\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo dpkg -i puppetlabs-release-pc1-xenial.deb\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo apt-get update\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo apt-get install puppet git-core -y\n&quot;</span>,
+                <span class="ruby-string">&quot;tar xzf deploy.tar.gz\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo cp puppet.conf /etc/puppet/\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo cp site.pp /etc/puppet/manifests/\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo cp drupal.pp /etc/puppet/manifests/\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo puppet module install puppetlabs-apache\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo puppet module install puppetlabs-mysql\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo puppet apply /etc/puppet/manifests/site.pp\n&quot;</span>,
+                <span class="ruby-string">&quot;sudo puppet apply /etc/puppet/manifests/drupal.pp\n&quot;</span>
+                ] ]
+            }
+        }
+      }
+    },
+
+  <span class="ruby-string">&quot;DrupalServerGroup&quot;</span> <span class="ruby-operator">:</span> {
+     <span class="ruby-string">&quot;Type&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;AWS::AutoScaling::AutoScalingGroup&quot;</span>,
+     <span class="ruby-string">&quot;Properties&quot;</span> <span class="ruby-operator">:</span> {
+        <span class="ruby-string">&quot;AvailabilityZones&quot;</span> <span class="ruby-operator">:</span> { <span class="ruby-string">&quot;Fn::GetAZs&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;&quot;</span>},
+        <span class="ruby-string">&quot;LaunchConfigurationName&quot;</span> <span class="ruby-operator">:</span> { <span class="ruby-string">&quot;Ref&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;LaunchConfig&quot;</span> },
+        <span class="ruby-string">&quot;MinSize&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;1&quot;</span>,
+        <span class="ruby-string">&quot;MaxSize&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;3&quot;</span>,
+        <span class="ruby-string">&quot;LoadBalancerNames&quot;</span> <span class="ruby-operator">:</span> [ { <span class="ruby-string">&quot;Ref&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;LB&quot;</span> } ]
+     }
+  },
+
+  <span class="ruby-string">&quot;LB&quot;</span> <span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;Type&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;AWS::ElasticLoadBalancing::LoadBalancer&quot;</span>,
+    <span class="ruby-string">&quot;Properties&quot;</span><span class="ruby-operator">:</span> {
+      <span class="ruby-string">&quot;AvailabilityZones&quot;</span> <span class="ruby-operator">:</span> { <span class="ruby-string">&quot;Fn::GetAZs&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;&quot;</span> },
+      <span class="ruby-string">&quot;Listeners&quot;</span><span class="ruby-operator">:</span> [{<span class="ruby-string">&quot;InstancePort&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;80&quot;</span>, <span class="ruby-string">&quot;LoadBalancerPort&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;80&quot;</span>, <span class="ruby-string">&quot;Protocol&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;HTTP&quot;</span>}]  
+    }
+  },
+  <span class="ruby-string">&quot;drupalsecgrp&quot;</span> <span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;Type&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;AWS::EC2::SecurityGroup&quot;</span>,
+    <span class="ruby-string">&quot;Properties&quot;</span> <span class="ruby-operator">:</span> {
+      <span class="ruby-string">&quot;GroupDescription&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;Enable HTTP 80&quot;</span>,
+      <span class="ruby-string">&quot;SecurityGroupIngress&quot;</span> <span class="ruby-operator">:</span> [
+          {
+            <span class="ruby-string">&quot;IpProtocol&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;tcp&quot;</span>,
+            <span class="ruby-string">&quot;FromPort&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;80&quot;</span>,
+            <span class="ruby-string">&quot;ToPort&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;80&quot;</span>,
+            <span class="ruby-string">&quot;CidrIp&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;0.0.0.0/0&quot;</span>
+          }
+      ]
+    }
+  }
+},
+
+ <span class="ruby-string">&quot;Outputs&quot;</span> <span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;LBDNSName&quot;</span> <span class="ruby-operator">:</span> {
+      <span class="ruby-string">&quot;Description&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Hostname of the load balancer.&quot;</span>,
+      <span class="ruby-string">&quot;Value&quot;</span><span class="ruby-operator">:</span> {
+        <span class="ruby-string">&quot;Fn::GetAtt&quot;</span><span class="ruby-operator">:</span> [
+          <span class="ruby-string">&quot;LB&quot;</span>,
+          <span class="ruby-string">&quot;DNSName&quot;</span>
+        ]
+      }
+    }
+  },
+</pre>
+
+<p>}</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -8,7 +8,7 @@ We can check which command are available and what is the syntax with `./deployer
 
 
 ```
-deployer.rb check --server=SERVER         # check if drupal isreachable on the defined ip and port
+deployer.rb check --host=SERVER           # check if drupal isreachable on the defined ip and port
 deployer.rb create --stackname=STACKNAME  # create AWS stack
 deployer.rb delete --stackname=STACKNAME  # delete AWS stack
 deployer.rb help [COMMAND]                # Describe available commands or one specific command
@@ -17,7 +17,7 @@ deployer.rb help [COMMAND]                # Describe available commands or one s
 ###Examples
 
 ```
-./deployer.rb check --server=35.125.34.2
+./deployer.rb check --host=35.125.34.2
 ```
 
 ```
@@ -33,7 +33,7 @@ deployer.rb help [COMMAND]                # Describe available commands or one s
 ###Start the webservice
 
 ```bash
-sudo ruby service.rb
+./service.rb
 ```
 
 ###Endpoints
@@ -42,4 +42,4 @@ sudo ruby service.rb
 | ------ | -------- | ----------- |
 | POST   | /:stackname | Creates a stack |
 | DELETE | /:stackname | Deletes a stack |
-| GET    | /check/:dns | Checks if drupal is running on the server. |
+| GET    | /check/:host | Checks if drupal is running on the server. |

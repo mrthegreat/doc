@@ -1,0 +1,7 @@
+aws:
+  accesskey: 
+  secretkey: 
+  region: 
+
+cloudformation:
+  template: 

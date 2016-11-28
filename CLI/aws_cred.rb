@@ -2,6 +2,9 @@
 
 # Object which stores the AWS credential data
 class AWSCred
+  ##
+  # Initialize the credential obcjet which stores
+  # AWS credentail data
   def initialize(credentials)
     @access_key = credentials[:access_key]
     @secret_access_key = credentials[:secret_access_key]

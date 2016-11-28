@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>drupal.pp - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../CLI/aws_template.html">aws.template</a>
+  
+    <li class="file"><a href="../README_md.html">README</a>
+  
+    <li class="file"><a href="../doc/created_rid.html">created.rid</a>
+  
+    <li class="file"><a href="../s3_files/apache2_conf.html">apache2.conf</a>
+  
+    <li class="file"><a href="../s3_files/drupal_pp.html">drupal.pp</a>
+  
+    <li class="file"><a href="../s3_files/puppet_conf.html">puppet.conf</a>
+  
+    <li class="file"><a href="../s3_files/site_pp.html">site.pp</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../AWSClient.html">AWSClient</a>
+  
+    <li><a href="../AWSCred.html">AWSCred</a>
+  
+    <li><a href="../DrupalCLI.html">DrupalCLI</a>
+  
+    <li><a href="../Main.html">Main</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>exec { &#39;php_xml&#39;:</p>
+
+<pre class="ruby">  <span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/bin/apt-get install php-xml -y&#39;</span>
+}
+</pre>
+
+<p>exec { &#39;install_drush&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/bin/sudo /usr/bin/php -r &quot;readfile(\https://s3.amazonaws.com/files.drush.org/drush.phar\);&quot; &gt; /usr/local/bin/drush&#39;</span>
+</pre>
+
+<p>}</p>
+
+<p>exec { &#39;give_run_rights&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/bin/sudo chmod +x /usr/local/bin/drush&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;install_drush&#39;</span>]
+</pre>
+
+<p>}</p>
+
+<p>exec { &#39;install_php_mysql&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/bin/apt install php-mysql -y&#39;</span>
+</pre>
+
+<p>}</p>
+
+<p>exec { &#39;install_php_gd&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/bin/apt install php-gd -y&#39;</span>
+</pre>
+
+<p>}</p>
+
+<p>exec { &#39;create_example_proj&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/bin/sudo drush dl drupal --drupal-project-rename=example --yes&#39;</span>,
+<span class="ruby-identifier">cwd</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/home/ubuntu/&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;give_run_rights&#39;</span>]
+</pre>
+
+<p>}</p>
+
+<p>exec { &#39;install_drupal&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/local/bin/drush site-install standard --db-url=\mysql://drupal:password@localhost/drupal\ --site-name=Example --yes&#39;</span>,
+<span class="ruby-identifier">cwd</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/home/ubuntu/example&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;create_example_proj&#39;</span>]
+</pre>
+
+<p>}</p>
+
+<p>exec { &#39;move_drupal&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/bin/mv example/ /var/www/html/&#39;</span>,
+<span class="ruby-identifier">cwd</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/home/ubuntu/&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;install_drupal&#39;</span>]
+</pre>
+
+<p>}</p>
+
+<p>exec { &#39;configure_drupal&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/bin/cp /root/.htaccess /var/www/html/example/&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;move_drupal&#39;</span>]
+</pre>
+
+<p>}</p>
+
+<p>exec { &#39;configure_apache&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/bin/cp /root/apache2.conf /etc/apache2/apache2.conf&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;configure_drupal&#39;</span>]
+</pre>
+
+<p>}</p>
+
+<p>exec {&#39;enable_rewrite&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/sbin/a2enmod rewrite&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;configure_apache&#39;</span>]
+</pre>
+
+<p>}</p>
+
+<p>exec {&#39;set_ownership&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/bin/chown -R www-data:www-data /var/www/html/example&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;enable_rewrite&#39;</span>]
+</pre>
+
+<p>}</p>
+
+<p>exec {&#39;clear_drupal_cache&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/local/bin/drush cr&#39;</span>,
+<span class="ruby-identifier">cwd</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/var/www/html/example/&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;set_ownership&#39;</span>]
+</pre>
+
+<p>}</p>
+
+<p>exec {&#39;apache_restart&#39;:</p>
+
+<pre class="ruby"><span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/usr/sbin/service apache2 restart&#39;</span>,
+<span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exec</span>[<span class="ruby-string">&#39;clear_drupal_cache&#39;</span>]
+</pre>
+
+<p>}</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

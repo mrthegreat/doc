@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>site.pp - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../CLI/aws_template.html">aws.template</a>
+  
+    <li class="file"><a href="../README_md.html">README</a>
+  
+    <li class="file"><a href="../doc/created_rid.html">created.rid</a>
+  
+    <li class="file"><a href="../s3_files/apache2_conf.html">apache2.conf</a>
+  
+    <li class="file"><a href="../s3_files/drupal_pp.html">drupal.pp</a>
+  
+    <li class="file"><a href="../s3_files/puppet_conf.html">puppet.conf</a>
+  
+    <li class="file"><a href="../s3_files/site_pp.html">site.pp</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../AWSClient.html">AWSClient</a>
+  
+    <li><a href="../AWSCred.html">AWSCred</a>
+  
+    <li><a href="../DrupalCLI.html">DrupalCLI</a>
+  
+    <li><a href="../Main.html">Main</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>class { &#39;apache&#39;:                # use the “apache” module</p>
+
+<pre class="ruby"><span class="ruby-identifier">default_vhost</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>,        <span class="ruby-comment"># don&#39;t use the default vhost</span>
+<span class="ruby-identifier">default_mods</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>,         <span class="ruby-comment"># don&#39;t load default mods</span>
+<span class="ruby-identifier">mpm_module</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;prefork&#39;</span>,        <span class="ruby-comment"># use the &quot;prefork&quot; mpm_module</span>
+</pre>
+
+<p>}</p>
+
+<pre class="ruby"> <span class="ruby-identifier">include</span> <span class="ruby-identifier">apache</span><span class="ruby-operator">::</span><span class="ruby-identifier">mod</span><span class="ruby-operator">::</span><span class="ruby-identifier">php</span>        <span class="ruby-comment"># include mod php</span>
+ <span class="ruby-identifier">apache</span><span class="ruby-operator">::</span><span class="ruby-identifier">vhost</span> { <span class="ruby-string">&#39;example.com&#39;</span><span class="ruby-operator">:</span>  <span class="ruby-comment"># create a vhost called &quot;example.com&quot;</span>
+  <span class="ruby-identifier">port</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;80&#39;</span>,               <span class="ruby-comment"># use port 80</span>
+  <span class="ruby-identifier">docroot</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/var/www/html&#39;</span>,     <span class="ruby-comment"># set the docroot to the /var/www/html</span>
+}
+
+<span class="ruby-identifier">class</span> { <span class="ruby-string">&#39;mysql::server&#39;</span><span class="ruby-operator">:</span>
+  <span class="ruby-identifier">root_password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;password&#39;</span>,
+  <span class="ruby-identifier">override_options</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-string">&#39;mysqld&#39;</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-string">&#39;max_connections&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;1024&#39;</span> } }
+}
+
+<span class="ruby-identifier">exec</span> { <span class="ruby-string">&quot;create-drupal-db&quot;</span><span class="ruby-operator">:</span>
+    <span class="ruby-identifier">unless</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;/usr/bin/mysql -u root -ppassword drupal&quot;</span>,
+    <span class="ruby-identifier">command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;/usr/bin/mysql -uroot -ppassword -e \&quot;create database drupal; grant all on drupal.* to drupal@localhost identified by &#39;password&#39;;\&quot;&quot;</span>,
+    <span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Service</span>[<span class="ruby-string">&quot;mysqld&quot;</span>],
+  }
+
+<span class="ruby-identifier">file</span> { <span class="ruby-string">&#39;info.php&#39;</span><span class="ruby-operator">:</span>                                <span class="ruby-comment"># file resource name</span>
+  <span class="ruby-identifier">path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;/var/www/html/info.php&#39;</span>,               <span class="ruby-comment"># destination path</span>
+  <span class="ruby-keyword">ensure</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">file</span>,
+  <span class="ruby-identifier">require</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Class</span>[<span class="ruby-string">&#39;apache&#39;</span>],                     <span class="ruby-comment"># require apache class be used</span>
+  <span class="ruby-identifier">source</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;puppet:///modules/apache/info.php&#39;</span>,  <span class="ruby-comment"># specify location of file to be copied</span>
+}
+</pre>
+
+<p>package { &#39;php-mysql&#39;:</p>
+
+<pre class="ruby"><span class="ruby-keyword">ensure</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">installed</span>,
+</pre>
+
+<p>}</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

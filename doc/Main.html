@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Main - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>CLI/main.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-i-check_if_drupal_is_up">#check_if_drupal_is_up</a>
+    
+    <li ><a href="#method-i-create_stack">#create_stack</a>
+    
+    <li ><a href="#method-i-delete_stack">#delete_stack</a>
+    
+    <li ><a href="#method-i-read_config">#read_config</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./CLI/aws_template.html">aws.template</a>
+  
+    <li class="file"><a href="./README_md.html">README</a>
+  
+    <li class="file"><a href="./doc/created_rid.html">created.rid</a>
+  
+    <li class="file"><a href="./s3_files/apache2_conf.html">apache2.conf</a>
+  
+    <li class="file"><a href="./s3_files/drupal_pp.html">drupal.pp</a>
+  
+    <li class="file"><a href="./s3_files/puppet_conf.html">puppet.conf</a>
+  
+    <li class="file"><a href="./s3_files/site_pp.html">site.pp</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./AWSClient.html">AWSClient</a>
+  
+    <li><a href="./AWSCred.html">AWSCred</a>
+  
+    <li><a href="./DrupalCLI.html">DrupalCLI</a>
+  
+    <li><a href="./Main.html">Main</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Main</h1>
+
+  <div id="description" class="description">
+    
+<p>Class which contains main functionalities of the program</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-aws_client" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">aws_client</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-check_if_drupal_is_up" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_if_drupal_is_up</span><span
+            class="method-args">(server)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="check_if_drupal_is_up-source">
+            <pre><span class="ruby-comment"># File CLI/main.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_if_drupal_is_up</span>(<span class="ruby-identifier">server</span>)
+  <span class="ruby-identifier">address</span> = <span class="ruby-string">&#39;http://&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">server</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/example&#39;</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">open</span>(<span class="ruby-identifier">address</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">content</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">validate_response</span>(<span class="ruby-identifier">content</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">OpenURI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPError</span>, <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ETIMEDOUT</span>, <span class="ruby-constant">SocketError</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- check_if_drupal_is_up-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- check_if_drupal_is_up-method -->
+
+    
+      <div id="method-i-create_stack" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_stack</span><span
+            class="method-args">(stackname)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_stack-source">
+            <pre><span class="ruby-comment"># File CLI/main.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_stack</span>(<span class="ruby-identifier">stackname</span>)
+  <span class="ruby-ivar">@aws_client</span> = <span class="ruby-constant">AWSClient</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@credentials</span>, <span class="ruby-identifier">stackname</span>)
+  <span class="ruby-ivar">@aws_client</span>.<span class="ruby-identifier">create_stack</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_stack-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_stack-method -->
+
+    
+      <div id="method-i-delete_stack" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_stack</span><span
+            class="method-args">(stackname)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete_stack-source">
+            <pre><span class="ruby-comment"># File CLI/main.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_stack</span>(<span class="ruby-identifier">stackname</span>)
+  <span class="ruby-ivar">@aws_client</span> = <span class="ruby-constant">AWSClient</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@credentials</span>, <span class="ruby-identifier">stackname</span>)
+  <span class="ruby-ivar">@aws_client</span>.<span class="ruby-identifier">delete_stack</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- delete_stack-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- delete_stack-method -->
+
+    
+      <div id="method-i-read_config" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">read_config</span><span
+            class="method-args">(config_file = File.join(__dir__, 'config.yml'))</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="read_config-source">
+            <pre><span class="ruby-comment"># File CLI/main.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">read_config</span>(<span class="ruby-identifier">config_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">__dir__</span>, <span class="ruby-string">&#39;config.yml&#39;</span>))
+  <span class="ruby-identifier">config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">config_file</span>)
+  <span class="ruby-ivar">@credentials</span> = <span class="ruby-constant">AWSCred</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">access_key</span><span class="ruby-operator">:</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;aws&#39;</span>][<span class="ruby-string">&#39;accesskey&#39;</span>],
+                             <span class="ruby-identifier">secret_access_key</span><span class="ruby-operator">:</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;aws&#39;</span>][<span class="ruby-string">&#39;secretkey&#39;</span>],
+                             <span class="ruby-identifier">region</span><span class="ruby-operator">:</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;aws&#39;</span>][<span class="ruby-string">&#39;region&#39;</span>],
+                             <span class="ruby-identifier">template</span><span class="ruby-operator">:</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;cloudformation&#39;</span>][<span class="ruby-string">&#39;template&#39;</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- read_config-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- read_config-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
